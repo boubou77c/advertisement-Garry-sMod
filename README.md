@@ -46,9 +46,11 @@ Change the text color and the font family : _cl__init.lua_
 
 ## 📷 How it looks 
 
-![App Screenshot]("picture/pic.png")
+![App Screenshot](picture/pic.png)
 
 
 ## 🚀 About Me
 
 If you have any suggestion, you can write to me on my discord : 
+
+.bou_bou_

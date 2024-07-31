@@ -34,4 +34,5 @@ if SERVER then
   --Hook to get what the player write
   hook.Add("PlayerSay", "AdvertCommand", Advert)
 
+
 end
