@@ -9,21 +9,25 @@ To do an advertisement, you have to be minimum __Admin__.
 
 -The command is : /adv <message>
 
--The advertisement time duration is 10 secondes. 
+-The default advertisement time duration is 10 secondes. 
 
--You have to enter a message with less than 43 characters
 
-## Can i change the background or the timer ?
+## What can you change.
 
-Yes, you can change it.
+You can change many things as you wish :
 
 Time duration : <u>line code cl_init :</u>
 
 ```Lua
-      --Advert time duration : 10 sec
-      advertEndTime = CurTime() +10
-```
 
+--Timer before the panel closes (10 sec)
+      timer.Simple(10, function()
+          if IsValid(panel) then
+            --Remove the panel
+              panel:Remove()
+          end
+      end)
+```
 
 Import your own background :<u> cl_init.lua :</u>
 
@@ -32,10 +36,17 @@ You have to enter the new background into : _"Advertise\materials\adv\you_bg.png
   local backgroundAdv = Material("materials/adv/advert.png") 
 ```
 
+Change the text color and the font family : _cl__init.lua_
+```Lua
+      --Font used (you can change)
+      label:SetFont("DermaLarge")
+      --Text color (you can change)
+      label:SetColor(Color(255, 255, 255)) 
+```
+
 ## 📷 How it looks 
 
 ![App Screenshot]("picture/pic.png")
-
 
 
 ## 🚀 About Me

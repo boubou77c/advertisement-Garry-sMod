@@ -10,7 +10,7 @@ if SERVER then
         ply:CharPrint("You can't use this command.")
         return ""
       end
-      --Get the content
+      --Get the content]
       local args = string.sub(text, 5)
       --If he doesn't enter a content -> Explain how the command works
       if not args or args == "" then
@@ -19,13 +19,7 @@ if SERVER then
       end
 
       local advertMessage =args
-      --Check if it exceeded 43 char
-      if string.len(advertMessage) > 43 then
-        --Show the error
-        ply:ChatPrint("You can't send a message with more 43 char")
-        return ""
-
-    end
+      
       net.Start("RP_Advert")
       --Send the message to the client
       net.WriteString(advertMessage)
@@ -39,8 +33,5 @@ if SERVER then
 
   --Hook to get what the player write
   hook.Add("PlayerSay", "AdvertCommand", Advert)
-
-  --client :
-
 
 end

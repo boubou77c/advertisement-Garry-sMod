@@ -1,54 +1,63 @@
 if CLIENT then
-  local backgroundAdv = Material("materials/adv/advert.png")
-  local CustomFont = "Custom_Font"
-  
-  -- Create a font
-  surface.CreateFont("Custom_Font", {
-      font = "Arial",
-      size = 30, 
-      weight = 500, 
-      antialias = true,
-      shadow = true,
-    })
 
-  local advertEndTime = 0
+  --Load the material
+  local backgroundAdv = Material("materials/adv/advert.png")
+
+  --Function to create the panel
+  local function CreatePanel(advertMessage)
+      
+
+      local panel = vgui.Create("DPanel")
+      panel:SetBackgroundColor(Color(255, 100, 100, 0)) -- Make the panel transparent
+
+      -- Add the background
+      local image = vgui.Create("DImage", panel)
+      image:SetPos(0, 0)
+      image:SetImage("materials/adv/advert.png") -- Path to the background
+
+
+      -- Add the text on the background
+      local label = vgui.Create("DLabel", image)
+      --Message to show
+      label:SetText(advertMessage)
+      --Font used (you can change)
+      label:SetFont("DermaLarge")
+      --Text color (you can change)
+      label:SetColor(Color(255, 255, 255)) 
+
+      label:SizeToContents()
+
+      --calculate the text size + Info size / width / height...
+      local textW,textH = label:GetSize()
+
+      local padding = 20
+      local bgW = textW+padding*2
+      local bgH = 100
+      local scrW = ScrW()
+      local scrH = ScrH()
+
+      --Set the position and the size of the panel / bg
+      panel:SetPos((scrW-bgW) /2,30)
+      image:SetSize(bgW ,bgH)
+      panel:SetSize(bgW,bgH)
+
+      label:Center()
+
+      --Timer before the panel closes (10 sec)
+      timer.Simple(10, function()
+          if IsValid(panel) then
+            --Remove the panel
+              panel:Remove()
+          end
+      end)
+  end
+
+  -- Receiving the server message
   net.Receive("RP_Advert", function()
-      --Read the message sent by the server 
+      -- Read the message by the serv
       local advertMessage = net.ReadString()
 
-      --Advert time duration : 10 sec
-      advertEndTime = CurTime() +10
-
-
-      --Hook to draw the advert
-      hook.Add("HUDPaint","drawAdvert",function()
-
-          --Check if the time is finished
-          if CurTime() > advertEndTime then
-            --remove the hook
-            hook.Remove("HUDPaint","drawAdvert")
-            return 
-          end
-
-          --Get Info screenW /H , x,y...
-          local scrW = ScrW()
-          local scrH = ScrH()
-          local bgW = 600
-          local bgH = 100
-
-          local x = (scrW-bgW) /2
-          local y = 10
-
-          --If the materials is True -> Draw it
-          if backgroundAdv then
-            --send the Advert
-            surface.SetMaterial(backgroundAdv)
-            surface.SetDrawColor(255, 255, 255, 255) 
-            surface.DrawTexturedRect(x,y,bgW,bgH)
-            --Draw the text : Setting -> Font, color (orange)
-            draw.SimpleText(advertMessage,"Custom_Font",x+15,y+38,Color(255,165,0))
-
-          end
-        end)
-    end)
+      -- Call the function and create the panel
+      CreatePanel(advertMessage)
+  end)
 end

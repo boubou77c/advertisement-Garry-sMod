@@ -1,0 +1,12 @@
+{
+    "name": "Simple Advertisement",
+    "description": "An addon to do an advertisement for all players",
+    "author": "Boubou",
+    "version": "1.1",
+    "tags": ["utility", "advert", "hud"],
+    "files": [
+      "lua/autorun/server/init.lua",
+      "lua/autorun/client/cl_init.lua",
+      "materials/adv/advert.png"
+    ]
+  }
