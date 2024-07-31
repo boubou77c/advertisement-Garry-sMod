@@ -41,3 +41,5 @@ You have to enter the new background into : _"Advertise\materials\adv\you_bg.png
 ## 🚀 About Me
 
 If you have any suggestion, you can write to me on my discord : 
+
+.bou_bou_
