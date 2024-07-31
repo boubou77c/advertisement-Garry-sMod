@@ -1,4 +1,3 @@
--- ad-- advert.lua
 if SERVER then
   util.AddNetworkString("RP_Advert")
 
@@ -10,7 +9,7 @@ if SERVER then
         ply:CharPrint("You can't use this command.")
         return ""
       end
-      --Get the content]
+      --Get the content
       local args = string.sub(text, 5)
       --If he doesn't enter a content -> Explain how the command works
       if not args or args == "" then
