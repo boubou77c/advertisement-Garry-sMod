@@ -34,7 +34,7 @@ You have to enter the new background into : _"Advertise\materials\adv\you_bg.png
 
 ## 📷 How it looks 
 
-![App Screenshot]("picture/pic.png")
+![App Screenshot](picture/pic.png)
 
 
 
